@@ -26,7 +26,7 @@ class Simulation(object):
     cfg_file = ''
     net_file = ''
     route_file = ''
-    show_interface = False
+    show_interface = True
     traci_port = 0
     sumo_options = ''
     qlearning = QLearning
