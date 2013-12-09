@@ -21,15 +21,11 @@ if __name__ == '__main__':
     net_directory = ''
     net_directory_shell = ''
     net_file = ''
-    if(isGrid):
-        net_directory = '../network/grid/'
-        net_directory_shell = '../network/grid/'
-        net_file = 'slice_regulated.net.xml'
-    else:
-        vehicles = '36606'
-        net_directory = '../network/siouxfalls/'+ vehicles + '/'
-        net_directory_shell = '../network/siouxfalls/'+ vehicles +'/'
-        net_file = 'sioux_falls.net.xml'
+    
+    #futuramente carregar de algum xml
+    net_directory = '/home/grunitzki/Dropbox/UFRGS/traffic/networks/slice/' 
+    net_directory_shell = '/home/grunitzki/Dropbox/UFRGS/traffic/networks/slice/'
+    net_file = 'slice_regulated.net.xml'
     
     cfg_file = 'sumo.cfg.xml'
     route_file ='rou.xml'
@@ -37,7 +33,7 @@ if __name__ == '__main__':
     
     show_interface = interface
     traci_port = port
-    summary_file = net_directory+'/summary/10/summary_'
+    summary_file = net_directory+'/summary/summary_'
     sumo_options = '-S -Q --no-step-log --remote-port '+str(traci_port) +' --summary-output '+ summary_file
     show_log = True
     max_steps = 152

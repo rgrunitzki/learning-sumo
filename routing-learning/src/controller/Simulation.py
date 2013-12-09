@@ -4,7 +4,6 @@ Created on Nov 23, 2013
 
 @author: rgrunitzki
 '''
-
 import traci, sumolib
 from sumolib.net.edge import Edge
 from sumolib.net.node import Node
@@ -13,9 +12,6 @@ from xml.dom import minidom
 from controller.QLearning import QLearning
 from model.driver import Driver
 from util import search
-from multiprocessing.pool import ThreadPool as Pool
-import multiprocessing
-from symbol import except_clause
 
 class Simulation(object):
     '''
