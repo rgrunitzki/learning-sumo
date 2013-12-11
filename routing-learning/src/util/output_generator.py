@@ -7,9 +7,9 @@ Created on Nov 27, 2013
 
 import xml.etree.ElementTree as ET
 
-episodes = 200
+episodes = 96
 file_name = 'summary_'
-local = '../../network/grid/summary/10'
+local = '/home/grunitzki/Dropbox/UFRGS/traffic/networks/slice/summary'
 def get_average():
     
     #average

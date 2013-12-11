@@ -10,7 +10,7 @@ from controller.QLearning import QLearning
 
 port = 8813
 grid = True
-interface = False
+interface = True
 
 
 
@@ -23,9 +23,9 @@ if __name__ == '__main__':
     net_file = ''
     
     #futuramente carregar de algum xml
-    net_directory = '/home/grunitzki/Dropbox/UFRGS/traffic/networks/slice/' 
-    net_directory_shell = '/home/grunitzki/Dropbox/UFRGS/traffic/networks/slice/'
-    net_file = 'slice_regulated.net.xml'
+    net_directory = '/home/grunitzki/Desktop/Ortuzar10_1/Network/' 
+    net_directory_shell = '/home/grunitzki/Desktop/Ortuzar10_1/Network/'
+    net_file = 'ortuzar.net.xml'
     
     cfg_file = 'sumo.cfg.xml'
     route_file ='rou.xml'
@@ -38,9 +38,9 @@ if __name__ == '__main__':
     show_log = True
     max_steps = 152
     #QLearning parameters
-    episodes = 500
-    epislon = 0.1
-    epislon_rate = 0.995
+    episodes = 200
+    epislon = 1
+    epislon_rate = 0.95
     alpha = 0.5
     gamma = 0.95
     

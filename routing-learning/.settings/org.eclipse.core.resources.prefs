@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
 encoding//src/__init__.py=utf-8
 encoding//src/controller/Simulation.py=utf-8
+encoding//src/util/output_generator.py=utf-8

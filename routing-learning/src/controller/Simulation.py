@@ -99,7 +99,7 @@ class Simulation(object):
             states = []
             for l in list_edges:
                 #add the actions (edges) to the states (nodes): edge-id, q-value, reward (travel time on link)
-                states.append([str(Edge.getID(l)), 50*random.random(), 50*random.random()])
+                states.append([str(Edge.getID(l)), -50*random.random(), -50*random.random()])
             mdp.append(states)
         return mdp
     
@@ -147,10 +147,10 @@ class Simulation(object):
     def return_best_action(self, driver, id_next_node):
         keys = self.drivers[int(driver)].mdp[id_next_node].keys()
         action_key = ''
-        minimo = 100000000000
+        maximo = -100000000
         for k in keys:
-            if(self.drivers[int(driver)].mdp[id_next_node][k][0]< minimo):
-                minimo = self.drivers[int(driver)].mdp[id_next_node][k][0]
+            if(self.drivers[int(driver)].mdp[id_next_node][k][0] > maximo):
+                maximo = self.drivers[int(driver)].mdp[id_next_node][k][0]
                 action_key = k
         return action_key
     
@@ -231,7 +231,7 @@ class Simulation(object):
             total_time += time.time()-tempo
             #
             traci.simulationStep()     
-        print '\tsimulation',episode, 'finished in', total_time, 'seconds',  'steps', self.drivers[0].steps, self.drivers[1].steps
+        print '\tsimulation',episode, 'finished in', total_time, 'seconds',  'steps', self.drivers[0].steps
         self.traci_disconnect()
     def print_vehicle(self, driver):
         print driver
@@ -261,10 +261,7 @@ class Simulation(object):
                     #current q_value
                     current_q_value = self.drivers[int(driver)].mdp[id_next_node][action_key][0]
                     #action reward
-                    reward = self.drivers[int(driver)].mdp[id_next_node][action_key][1]
-                    
-                    if(reward <0):
-                        print 'reward negativo!'
+                    reward = -1*self.drivers[int(driver)].mdp[id_next_node][action_key][1]
                         
                     #node maximizes the reward on action
                     future_node = self.get_destination_node(action_key)
@@ -272,6 +269,9 @@ class Simulation(object):
                     id_new_future_edge = Node.getID(future_node)
                     
                     #q_value of the best action
+                    print 'driver', driver, 'edge atual ', id_current_edge, 'future node' ,id_new_future_edge
+                    if(id_new_future_edge == 'M1'):
+                        print 'vai dar pau'
                     best_action = self.drivers[int(driver)].mdp[id_new_future_edge][self.return_best_action(driver, id_new_future_edge)][0]
                     
                     #new q_value
@@ -319,7 +319,7 @@ class Simulation(object):
                             if(action==str(self.drivers[int(driver)].current_link)):
                                 '''in the future we need change this for the total travel time*-1'''
                                 #total_tt = - self.drivers[int(driver)].get_total_travel_time(self.get_time())
-                                self.drivers[int(driver)].mdp[last_node.getID()][action][0] = -200
+                                self.drivers[int(driver)].mdp[last_node.getID()][action][0] = -self.drivers[int(driver)].get_total_travel_time(self.get_time())
                                 break
                                     
                     #driver rechead his goal
