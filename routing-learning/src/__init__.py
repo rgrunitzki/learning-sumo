@@ -10,7 +10,7 @@ from controller.QLearning import QLearning
 
 port = 8813
 grid = True
-interface = True
+interface = False
 
 
 
@@ -23,9 +23,9 @@ if __name__ == '__main__':
     net_file = ''
     
     #futuramente carregar de algum xml
-    net_directory = '/home/grunitzki/Desktop/Ortuzar10_1/Network/' 
-    net_directory_shell = '/home/grunitzki/Desktop/Ortuzar10_1/Network/'
-    net_file = 'ortuzar.net.xml'
+    net_directory = '/home/grunitzki/Dropbox/UFRGS/traffic/networks/SiouxFalls/569/' 
+    net_directory_shell = '/home/grunitzki/Dropbox/UFRGS/traffic/networks/SiouxFalls/569/'
+    net_file = 'sioux_falls.net.xml'
     
     cfg_file = 'sumo.cfg.xml'
     route_file ='rou.xml'

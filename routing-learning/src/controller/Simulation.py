@@ -269,9 +269,6 @@ class Simulation(object):
                     id_new_future_edge = Node.getID(future_node)
                     
                     #q_value of the best action
-                    print 'driver', driver, 'edge atual ', id_current_edge, 'future node' ,id_new_future_edge
-                    if(id_new_future_edge == 'M1'):
-                        print 'vai dar pau'
                     best_action = self.drivers[int(driver)].mdp[id_new_future_edge][self.return_best_action(driver, id_new_future_edge)][0]
                     
                     #new q_value
